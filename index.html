@@ -42,30 +42,6 @@ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGE.
-
-This project incorporates work covered by the following copyright and permission notice:
-
-The MIT License (MIT)
-
-Copyright (c) 2016 Rafael Soares
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
 <title>archbuild — Guia de Instalação do Arch Linux</title>
@@ -7890,7 +7866,7 @@ Error message and password prompt
 <div created="20160714005258033" modified="20160714005420993" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="$:/ControlPanel Introdução" title="$:/StoryList">
+<div list="Introdução" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8317,7 +8293,31 @@ $$$
 # pacman -S xf86-input-libinput</pre>
 </div>
 <div author="Rafael Soares" created="20160714003353144" modified="20160714004130547" title="Introdução" type="text/vnd.tiddlywiki">
-<pre>''Este documento irá guiá-lo durante o processo de instalação e pós-instalação do Arch Linux.''
+<pre><!--
+This project incorporates work covered by the following copyright and permission notice:
+
+The MIT License (MIT)
+
+Copyright © 2016 Rafael Soares
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->''Este documento irá guiá-lo durante o processo de instalação e pós-instalação do Arch Linux.''
 
 Página do projeto: https://github.com/rafaelsoaresbr/archbuild
 
@@ -8362,7 +8362,7 @@ Página do projeto: https://github.com/rafaelsoaresbr/archbuild
 # swapon /dev/sda2
 ```
 *''Btrfs:''
-&gt;Vamos criar um subvolume chamado `@arch` que montaremos no diretório `raiz`, e outro subvolume `@pkg` que montaremos no diretório `/var/cache/pacman/pkg` 
+&gt;Vamos criar um subvolume chamado `@arch` que montaremos no diretório `raiz`, e outro subvolume `@pkg` que montaremos no diretório `/var/cache/pacman/pkg`
 `MBR:`
 
 ```
