@@ -68,7 +68,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki — a non-linear personal web notebook</title>
+<title>archbuild — Guia de Instalação do Arch Linux</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -141,7 +141,68 @@ Error message and password prompt
 <div id="splashArea">
 
 
-<div class=" tc-reveal" hidden="true"></div>
+<p>This <a class="tc-tiddlylink-external" href="http://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
+
+<li>$:/core</li>
+
+<li>$:/DefaultTiddlers</li>
+
+<li>$:/isEncrypted</li>
+
+<li>$:/palette</li>
+
+<li>$:/SiteSubtitle</li>
+
+<li>$:/SiteTitle</li>
+
+<li>$:/state/tab--1963855381</li>
+
+<li>$:/state/tab--2112689675</li>
+
+<li>$:/state/tab--959111941</li>
+
+<li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab/sidebar--1835078512</li>
+
+<li>$:/StoryList</li>
+
+<li>$:/temp/info-plugin</li>
+
+<li>$:/themes/tiddlywiki/snowwhite</li>
+
+<li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>$:/UploadName</li>
+
+<li>Adicionar usuário</li>
+
+<li>Configurando o sistema</li>
+
+<li>Criando os sistemas de arquivos</li>
+
+<li>Finalizando a instalação</li>
+
+<li>Gnome</li>
+
+<li>Instalação do Arch Linux</li>
+
+<li>Instalando o gerenciador de boot</li>
+
+<li>Instalando o sistema</li>
+
+<li>Instalar o Xorg</li>
+
+<li>Introdução</li>
+
+<li>Montando os sistemas de arquivos</li>
+
+<li>Particionando os discos</li>
+
+<li>Pós-instalação do Arch Linux</li>
+
+</ul>
+</p>
 
 
 
@@ -7798,8 +7859,53 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20160714002946853" modified="20160714002950306" title="$:/DefaultTiddlers">
+<pre>Introdução
+</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
+</div>
+<div created="20160714005546502" modified="20160714005546502" title="$:/palette">
+<pre>$:/palettes/Blue</pre>
+</div>
+<div created="20160714002930369" modified="20160714002937920" title="$:/SiteSubtitle">
+<pre>Guia de Instalação do Arch Linux</pre>
+</div>
+<div created="20160714002921675" modified="20160714002926573" title="$:/SiteTitle">
+<pre>archbuild</pre>
+</div>
+<div created="20160714005532487" modified="20160714005535556" title="$:/state/tab--1963855381">
+<pre>$:/core/ui/ControlPanel/Palette</pre>
+</div>
+<div created="20160714005434715" modified="20160714005513884" title="$:/state/tab--2112689675">
+<pre>$:/core/ui/ControlPanel/Basics</pre>
+</div>
+<div created="20160714005447235" modified="20160714005510863" title="$:/state/tab--959111941">
+<pre>$:/core/ui/ControlPanel/EditorTypes</pre>
+</div>
+<div created="20160714005515683" modified="20160714005643173" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
+</div>
+<div created="20160714005258033" modified="20160714005420993" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/Open</pre>
+</div>
+<div list="$:/ControlPanel Introdução" title="$:/StoryList">
+<pre></pre>
+</div>
+<div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/info/browser&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser&quot;,
+            &quot;text&quot;: &quot;yes&quot;
+        },
+        &quot;$:/info/node&quot;: {
+            &quot;title&quot;: &quot;$:/info/node&quot;,
+            &quot;text&quot;: &quot;no&quot;
+        }
+    }
+}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.12">
 <pre>{
@@ -7909,6 +8015,478 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20160714005630428" modified="20160714005635167" title="$:/UploadName">
+<pre></pre>
+</div>
+<div author="Rafael Soares" created="20160714005002420" modified="20160714005041626" tags="usuário sudo" title="Adicionar usuário" type="text/vnd.tiddlywiki">
+<pre>''Para adicionar um novo usuário com privilégios administrativos proceda com os seguintes comandos:''
+
+```
+# useradd -m -G wheel -s /bin/bash archie
+```
+&gt;Onde `archie` é o seu nome de usuário
+```
+# EDITOR=nano visudo
+```
+&gt;Descomente a seguinte linha, depois salve o arquivo e feche o editor:
+$$$
+%wheel      ALL=(ALL) ALL
+$$$
+&gt;Defina um senha para o seu usário:
+
+```
+# passwd archie
+```</pre>
+</div>
+<div author="Rafael Soares" created="20160714004436426" modified="20160714004534577" tags="chroot locale netctl layout teclado" title="Configurando o sistema" type="text/vnd.tiddlywiki">
+<pre>*''Mudar a raiz:''
+```
+# arch-chroot /mnt /bin/bash
+```
+*''Alterar a localização:''
+```
+# nano /etc/locale.gen
+```
+$$$
+Ctrl + w: pesquisar palavra
+Ctrl + o: salvar as modificações
+Ctrl + x: sair do editor
+$$$
+&gt;Pesquise pela string `pt_BR` para ir direto a linha:
+&gt;`#pt_BR.UTF-8 UTF-8`
+&gt;Depois é só apagar o `#` do início da linha, salvar e sair do editor.
+```
+# locale-gen
+```
+```
+# echo LANG=pt_BR.UTF-8 &gt; /etc/locale.conf
+```
+*''Layout do teclado:''
+```
+# echo KEYMAP=br-abnt2 &gt; /etc/vconsole.conf
+```
+*''Fuso horário:''
+```
+# tzselect
+```
+```
+# ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+```
+&gt;Neste exemplo foi definido o horário de São Paulo
+```
+# hwclock --systohc --utc
+```
+*''Gerar ambiente ramdisk inicial: ''`(OPCIONAL)`
+```
+# nano /etc/mkinitcpio.conf
+```
+```
+# mkinitcpio -p linux
+```
+&gt;Você pode adicionar o HOOK `resume` após o `udev`, ou acrescentar em MODULES o módulo da sua placa de vídeo `radeon`, `nouveau` ou `intel_agp i915` após instalar o driver da mesma.
+*''Nome da máquina:''
+```
+# echo myhostname &gt; /etc/hostname
+```
+```
+# nano /etc/hosts
+```
+&gt;Mude o nome `myhostname` com o nome que desejar, depois adicione o mesmo nome às entradas `localhost` no arquivo `/etc/hosts`
+$$$
+127.0.0.1  localhost.localdomain  localhost  myhostname
+::1        localhost.localdomain  localhost  myhostname
+$$$
+*''Instalando o Netctl:''
+```
+# pacman -S wpa_actiond ifplugd dialog
+```
+&gt;Esses pacotes são necessários para você usar o `wifi-menu` no sistema instalado.
+*''Próximo: [[Instalando o gerenciador de boot]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160714003930861" modified="20160714004223482" tags="formatar disco ext4 swap btrfs" title="Criando os sistemas de arquivos" type="text/vnd.tiddlywiki">
+<pre>*''ext4 ou Btrfs?''
+&lt;&lt;&lt;
+Btrfs é um sistema de arquivos com recursos avançados como RAID por software, checagem de integridade, backup incremental, instantâneo e compressão.
+&lt;&lt;&lt;
+*''MBR:''
+```
+# mkswap /dev/sda1
+```
+`Escolha um:`
+
+```
+# mkfs.ext4 /dev/sda2
+# mkfs.btrfs /dev/sda2
+```
+```
+# mkfs.ext4 /dev/sda3
+```
+*''GPT:''
+```
+# mkfs.vfat -F32 /dev/sda1
+```
+```
+# mkswap /dev/sda2
+```
+`Escolha um:`
+
+```
+# mkfs.ext4 /dev/sda3
+# mkfs.btrfs /dev/sda3
+```
+```
+# mkfs.ext4 /dev/sda4
+```
+*''Próximo: [[Montando os sistemas de arquivos]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160714004654096" modified="20160714004736305" tags="senha" title="Finalizando a instalação" type="text/vnd.tiddlywiki">
+<pre>*''Definir a senha do usuário root:''
+```
+# passwd
+```
+*''Mudar a raiz:''
+```
+# exit
+```
+*''Desmontar os sistemas de arquivos:''
+```
+# umount -R /mnt
+```
+*''Reiniciar o sistema:''
+```
+# reboot
+```
+''Instalação finalizada! Para voltar à página inicial clique em:''
+
+*[[Introdução]]
+''Ou processa para a pós-instalação:''
+
+*[[Pós-instalação do Arch Linux]]</pre>
+</div>
+<div author="Rafael Soares" created="20160714005148778" modified="20160714005226891" tags="gnome de gdm" title="Gnome" type="text/vnd.tiddlywiki">
+<pre>''Para instalar o Gnome proceda com os seguintes comandos:''
+
+
+```
+# pacman -S gnome gnome-extra
+```
+```
+# systemctl enable gdm
+```
+```
+# systemctl enable NetworkManager
+```</pre>
+</div>
+<div author="Rafael Soares" created="20160714003654561" modified="20160714004147939" tags="instalar arch" title="Instalação do Arch Linux" type="text/vnd.tiddlywiki">
+<pre>''Após iniciar a mídia de instalação do Arch Linux, processa com os comandos a seguir:''
+
+*''Legacy ou UEFI?''
+```
+# ls /sys/firmware/efi/efivars
+```
+&gt;Se o diretório acima contiver arquivos então a inicialização é do tipo UEFI
+
+*''Layout do teclado:''
+```
+# loadkeys br-abnt2
+```
+*''Conexão com a internet:''
+&gt;Para redes cabeadas a configuração deve ocorrer de forma automática usando DHCP. Para conectar a uma rede sem fio:
+
+```
+# wifi-menu
+```
+*''Sincronizar o horário:''
+```
+# timedatectl set-ntp true
+```
+*''Próximo: [[Particionando os discos]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160714004547314" modified="20160714004639167" tags="grub efi legacy refind" title="Instalando o gerenciador de boot" type="text/vnd.tiddlywiki">
+<pre>*''Grub:''
+`Legacy:`
+
+```
+# pacman -S grub
+```
+```
+# grub-install --recheck --target=i386-pc /dev/sda
+```
+```
+# grub-mkconfig -o /boot/grub/grub.cfg
+```
+`EFI:`
+
+```
+# pacman -S grub efibootmgr
+```
+```
+# grub-install --recheck --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+```
+```
+# grub-mkconfig -o /boot/grub/grub.cfg
+```
+*''rEFInd: ''`(APENAS EFI)`
+
+`ext4:`
+
+```
+# pacman -S refind-efi
+```
+```
+# refind-install --alldrivers
+```
+`Btrfs:`
+
+```
+# pacman -S refind-efi
+```
+```
+# refind-install --alldrivers
+```
+```
+# nano /boot/EFI/refind/refind.conf
+```
+&gt;No final do arquivo adicione a seguinte entrada, depois salve as alterações e feche o editor:
+$$$
+menuentry &quot;Arch Linux&quot; {
+        icon /EFI/refind/icons/os_arch.png
+        volume Linux
+        loader /@arch/boot/vmlinuz-linux
+        initrd /@arch/boot/initramfs-linux.img
+        options &quot;root=PARTLABEL=Linux rw rootflags=subvol=@arch resume=PARTLABEL=swap&quot;
+        submenuentry &quot;Boot using fallback initramfs&quot; {
+                initrd /@arch/boot/initramfs-linux-fallback.img
+        }
+}
+$$$
+*''Próximo: [[Finalizando a instalação]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160714004347047" modified="20160714004425468" tags="pacstrap fstab" title="Instalando o sistema" type="text/vnd.tiddlywiki">
+<pre>*''Configurar o espelho:''
+```
+# cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.old
+```
+&gt;Memorize o endereço do espelho (ou parte dele):
+
+```
+# nano /etc/pacman.d/mirrorlist.old
+```
+```
+# cat /etc/pacman.d/mirrorlist.old | grep arch.localmsp &gt; /etc/pacman.d/mirrorlist
+```
+&gt;Neste exemplo o espelho escolhido foi:
+&gt;`Server = http://arch.localmsp.org/arch/$repo/os/$arch`
+&gt;Verifique o repositório escolhido:
+
+```
+# cat /etc/pacman.d/mirrorlist
+```
+*''Instalar o sistema base:''
+```
+# pacstrap -i /mnt base base-devel
+```
+*''Gerar o fstab:''
+```
+# genfstab -U /mnt &gt; /mnt/etc/fstab
+```
+*''Próximo: [[Configurando o sistema]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160714005054495" modified="20160714005134871" tags="xorg vídeo driver" title="Instalar o Xorg" type="text/vnd.tiddlywiki">
+<pre>''Para instalar o Xorg proceda com os seguintes comandos:''
+
+```
+# pacman -S xorg-server xorg-server-utils xorg-apps
+```
+&gt;Driver de vídeo:
+|!Marca|!Tipo|!Driver|
+|!Intel|Open source|xf86-video-intel|
+|!AMD|Open source|xf86-video-ati|
+|~|Proprietário|catalyst^^AUR^^|
+|!Nvidia|Open source|xf86-video-nouveau|
+|~|Proprietário|nvidia|
+|~|~|nvidia-340xx|
+|~|~|nvidia-304xx|
+```
+# pacman -S nome_do_driver
+```
+&gt;Escolha um driver para o touchpad:
+```
+# pacman -S xf86-input-synaptics
+# pacman -S xf86-input-libinput</pre>
+</div>
+<div author="Rafael Soares" created="20160714003353144" modified="20160714004130547" title="Introdução" type="text/vnd.tiddlywiki">
+<pre>''Este documento irá guiá-lo durante o processo de instalação e pós-instalação do Arch Linux.''
+
+Página do projeto: https://github.com/rafaelsoaresbr/archbuild
+
+*[[Instalação do Arch Linux]]
+
+*[[Pós-instalação do Arch Linux]]</pre>
+</div>
+<div author="Rafael Soares" created="20160714004237108" modified="20160714004331568" tags="montar raiz home" title="Montando os sistemas de arquivos" type="text/vnd.tiddlywiki">
+<pre>*''ext4:''
+`MBR:`
+
+```
+# mount /dev/sda2 /mnt
+```
+```
+# mkdir -p /mnt/home
+```
+```
+# mount /dev/sda3 /mnt/home
+```
+```
+# swapon /dev/sda1
+```
+`GPT:`
+
+```
+# mount /dev/sda3 /mnt
+```
+```
+# mkdir -p /mnt/boot
+```
+```
+# mount /dev/sda1 /mnt/boot
+```
+```
+# mkdir -p /mnt/home
+```
+```
+# mount /dev/sda4 /mnt/home
+```
+```
+# swapon /dev/sda2
+```
+*''Btrfs:''
+&gt;Vamos criar um subvolume chamado `@arch` que montaremos no diretório `raiz`, e outro subvolume `@pkg` que montaremos no diretório `/var/cache/pacman/pkg` 
+`MBR:`
+
+```
+# mount -o noatime,compress=lzo /dev/sda2 /mnt
+```
+```
+# btrfs subvolume create /mnt/@arch
+```
+```
+# btrfs subvolume create /mnt/@pkg
+```
+```
+# umount /dev/sda2
+```
+```
+# mount -o noatime,compress=lzo,subvol=@arch /dev/sda2 /mnt
+```
+```
+# mkdir -p /mnt/var/cache/pacman/pkg
+```
+```
+# mount -o noatime,compress=lzo,subvol=@pkg /dev/sda2 /mnt/var/cache/pacman/pkg
+```
+```
+# mkdir -p /mnt/home
+```
+```
+# mount /dev/sda3 /mnt/home
+```
+```
+# swapon /dev/sda1
+```
+`GPT:`
+
+```
+# mount -o noatime,compress=lzo /dev/sda3 /mnt
+```
+```
+# btrfs subvolume create /mnt/@arch
+```
+```
+# btrfs subvolume create /mnt/@pkg
+```
+```
+# umount /dev/sda3
+```
+```
+# mount -o noatime,compress=lzo,subvol=@arch /dev/sda3 /mnt
+```
+```
+# mkdir -p /mnt/var/cache/pacman/pkg
+```
+```
+# mount -o noatime,compress=lzo,subvol=@pkg /dev/sda3 /mnt/var/cache/pacman/pkg
+```
+```
+# mkdir -p /mnt/home
+```
+```
+# mount /dev/sda4 /mnt/home
+```
+```
+# mkdir -p /mnt/boot
+```
+```
+# mount /dev/sda1 /mnt/boot
+```
+```
+# swapon /dev/sda2
+```
+*''Próximo: [[Instalando o sistema]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160714003825994" modified="20160714004208845" tags="partição disco" title="Particionando os discos" type="text/vnd.tiddlywiki">
+<pre>*''MBR ou GPT?''
+&gt;Se a sua inicialização é do tipo UEFI você pode usar a tabela de partição GPT, caso contrário use a tabela do tipo MBR.
+*''MBR:''
+```
+# fdisk /dev/sda
+```
+$$$
+m: exibe lista de comandos
+o: cria uma tabela MBR vazia
+n: cria uma nova partição
+d: exclui uma partição
+t: altera o tipo da partição
+p: mostra a tabela de partição
+w: grava a tabela no disco e sai
+q: sai sem salvar as alterações
+$$$
+|#|Caminho|Tipo|Tamanho|
+|1|swap|82|1-4GiB|
+|2|/|83|16-24GiB|
+|3|/home|83|Restante|
+*''GPT:''
+```
+# gdisk /dev/sda
+```
+$$$
+?: exibe lista de comandos
+o: cria uma tabela GPT vazia
+n: cria uma nova partição
+d: exclui uma partição
+t: altera o tipo da partição
+c: muda o nome da partição
+p: mostra a tabela de partição
+w: grava a tabela no disco e sai
+q: sai sem salvar as alterações
+$$$
+|#|Caminho|Tamanho|Tipo|Nome|
+|1|/boot|512MiB|EF00|Padrão|
+|2|swap|1-4GiB|8200|swap|
+|3|/|16-24GiB|8300|Linux|
+|4|/home|Restante|8300|Padrão|
+&gt;Não esqueça de definir os nomes `swap` e `Linux` de acordo com a tabela acima, Estes nomes serão usados depois na instalação do `rEFInd`.
+*''Próximo: [[Criando os sistemas de arquivos]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160714004832749" modified="20160714004945781" tags="pós" title="Pós-instalação do Arch Linux" type="text/vnd.tiddlywiki">
+<pre>''Após a instalação do Arch Linux, você precisará adicionar funcionalidades adicionais. Separamos algumas delas neste documento, organizadas por categoria:''
+
+*''Sistema:''
+**[[Adicionar usuário]]
+**[[Instalar o Xorg]]
+*''Ambiente gráfico:''
+**[[Gnome]]</pre>
 </div>
 
 </div>
