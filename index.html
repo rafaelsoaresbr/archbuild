@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/state/showeditpreview</li>
 
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab--2112689675</li>
@@ -181,6 +183,8 @@ Error message and password prompt
 
 <li>Configurando o sistema</li>
 
+<li>Configurar o Netctl</li>
+
 <li>Criando os sistemas de arquivos</li>
 
 <li>Finalizando a instalação</li>
@@ -197,11 +201,15 @@ Error message and password prompt
 
 <li>Introdução</li>
 
+<li>MATE</li>
+
 <li>Montando os sistemas de arquivos</li>
 
 <li>Particionando os discos</li>
 
 <li>Pós-instalação do Arch Linux</li>
+
+<li>Xinitrc</li>
 
 </ul>
 </p>
@@ -7877,8 +7885,11 @@ Error message and password prompt
 <div created="20160714002921675" modified="20160714002926573" title="$:/SiteTitle">
 <pre>archbuild</pre>
 </div>
-<div created="20160714153437152" modified="20160714154309530" title="$:/state/showeditpreview">
+<div created="20160714153437152" modified="20160716143312881" title="$:/state/showeditpreview">
 <pre>no</pre>
+</div>
+<div created="20160716131141252" modified="20160716143304340" title="$:/state/sidebar">
+<pre>yes</pre>
 </div>
 <div created="20160714005532487" modified="20160714005535556" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/Palette</pre>
@@ -8024,7 +8035,7 @@ Error message and password prompt
 <div created="20160714005630428" modified="20160714005635167" title="$:/UploadName">
 <pre></pre>
 </div>
-<div author="Rafael Soares" created="20160714005002420" modified="20160714005041626" tags="usuário sudo" title="Adicionar usuário" type="text/vnd.tiddlywiki">
+<div author="Rafael Soares" created="20160714005002420" modified="20160716130947827" tags="usuário sudo" title="Adicionar usuário" type="text/vnd.tiddlywiki">
 <pre>''Para adicionar um novo usuário com privilégios administrativos proceda com os seguintes comandos:''
 
 ```
@@ -8038,7 +8049,7 @@ Error message and password prompt
 $$$
 %wheel      ALL=(ALL) ALL
 $$$
-&gt;Defina um senha para o seu usário:
+&gt;Defina um senha para o seu usuário:
 
 ```
 # passwd archie
@@ -8108,6 +8119,32 @@ $$$
 ```
 &gt;Esses pacotes são necessários para você usar o `wifi-menu` no sistema instalado.
 *''Próximo: [[Instalando o gerenciador de boot]]''</pre>
+</div>
+<div author="Rafael Soares" created="20160716130247668" modified="20160716130934116" tags="rede netctl" title="Configurar o Netctl" type="text/vnd.tiddlywiki">
+<pre>''Para configurar o Netctl proceda com os seguintes comandos:''
+
+```
+# ip link
+```
+&gt;Tome nota dos nomes das interfaces de redes, enpXsY para rede cabeada e wlpXsY para redes sem fio
+```
+# cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/ethernet-dhcp
+```
+```
+# nano /etc/netctl/ethernet-dhcp
+```
+&gt;Modifique a seguinte linha, substituindo `eth0` pelo nome da sua interface:
+$$$
+Interface=enpXsY
+$$$
+&gt;Habilite os serviços do Netctl:
+
+```
+# sudo systemctl enable netctl-ifplugd@enpXsY.service
+```
+```
+# sudo systemctl enable netctl-auto@wlpXsY.service
+```</pre>
 </div>
 <div author="Rafael Soares" created="20160714003930861" modified="20160714004223482" tags="formatar disco ext4 swap btrfs" title="Criando os sistemas de arquivos" type="text/vnd.tiddlywiki">
 <pre>*''ext4 ou Btrfs?''
@@ -8298,17 +8335,18 @@ $$$
 ```
 *''Próximo: [[Configurando o sistema]]''</pre>
 </div>
-<div author="Rafael Soares" created="20160714005054495" modified="20160714005134871" tags="xorg vídeo driver" title="Instalar o Xorg" type="text/vnd.tiddlywiki">
+<div author="Rafael Soares" created="20160714005054495" modified="20160716131636532" tags="xorg vídeo driver" title="Instalar o Xorg" type="text/vnd.tiddlywiki">
 <pre>''Para instalar o Xorg proceda com os seguintes comandos:''
 
 ```
-# pacman -S xorg-server xorg-server-utils xorg-apps
+# pacman -S xorg-server xorg-server-utils
 ```
 &gt;Driver de vídeo:
 |!Marca|!Tipo|!Driver|
-|!Intel|Open source|xf86-video-intel|
-|!AMD|Open source|xf86-video-ati|
+|!AMD|Open source|xf86-video-amdgpu|
+|~|~|xf86-video-ati|
 |~|Proprietário|catalyst^^AUR^^|
+|!Intel|Open source|xf86-video-intel|
 |!Nvidia|Open source|xf86-video-nouveau|
 |~|Proprietário|nvidia|
 |~|~|nvidia-340xx|
@@ -8316,12 +8354,12 @@ $$$
 ```
 # pacman -S nome_do_driver
 ```
-&gt;Escolha um driver para o touchpad:
+&gt;Se você optou por instalar o xf86-input-evdev, instale um driver para o touchpad:
 ```
 # pacman -S xf86-input-synaptics
 # pacman -S xf86-input-libinput</pre>
 </div>
-<div author="Rafael Soares" created="20160714003353144" modified="20160714154350401" title="Introdução" type="text/vnd.tiddlywiki">
+<div author="Rafael Soares" created="20160714003353144" modified="20160716143313851" title="Introdução" type="text/vnd.tiddlywiki">
 <pre>''Este documento irá guiá-lo durante o processo de instalação e pós-instalação do Arch Linux.''
 
 Página do projeto: https://github.com/rafaelsoaresbr/archbuild
@@ -8329,6 +8367,29 @@ Página do projeto: https://github.com/rafaelsoaresbr/archbuild
 *[[Instalação do Arch Linux]]
 
 *[[Pós-instalação do Arch Linux]]</pre>
+</div>
+<div author="Rafael Soares" created="20160716133903497" modified="20160716143259731" tags="mate ambiente gráfico" title="MATE" type="text/vnd.tiddlywiki">
+<pre>''Para instalar o ambiente gráfico MATE proceda com os seguintes comandos:''
+
+```
+# pacman -S mate mate-extra
+```
+&gt;Para um instalação mínima:
+```
+$ pacman -S marco mate-panel mate-session-manager
+```
+```
+$ nano ~/.xinitrc
+```
+&gt;Apage ou comente as seguintes linhas e adicione o comando correspondente ao seu ambiente gráfico:
+```
+#twm &amp;
+#xclock -geometry 50x50-1+1 &amp;
+#xterm -geometry 80x50+494+51 &amp;
+#xterm -geometry 80x20+494-0 &amp;
+#exec xterm -geometry 80x66+0+0 -name login
+
+exec mate-session</pre>
 </div>
 <div author="Rafael Soares" created="20160714004237108" modified="20160714004331568" tags="montar raiz home" title="Montando os sistemas de arquivos" type="text/vnd.tiddlywiki">
 <pre>*''ext4:''
@@ -8484,14 +8545,40 @@ $$$
 &gt;Não esqueça de definir os nomes `swap` e `Linux` de acordo com a tabela acima, Estes nomes serão usados depois na instalação do `rEFInd`.
 *''Próximo: [[Criando os sistemas de arquivos]]''</pre>
 </div>
-<div author="Rafael Soares" created="20160714004832749" modified="20160714004945781" tags="pós" title="Pós-instalação do Arch Linux" type="text/vnd.tiddlywiki">
+<div author="Rafael Soares" created="20160714004832749" modified="20160716133842039" tags="pós" title="Pós-instalação do Arch Linux" type="text/vnd.tiddlywiki">
 <pre>''Após a instalação do Arch Linux, você precisará adicionar funcionalidades adicionais. Separamos algumas delas neste documento, organizadas por categoria:''
 
 *''Sistema:''
 **[[Adicionar usuário]]
+**[[Configurar o Netctl]]
 **[[Instalar o Xorg]]
+**[[Xinitrc]]
 *''Ambiente gráfico:''
-**[[Gnome]]</pre>
+**[[Gnome]]
+**[[MATE]]</pre>
+</div>
+<div author="Rafael Soares" created="20160716132730395" modified="20160716133752389" tags="xinitrc" title="Xinitrc" type="text/vnd.tiddlywiki">
+<pre>''Se você não gosta de gerenciadores de login e prefere usar o comando `startx` para iniciar o ambiente gráfico, proceda com os seguintes comandos:''
+
+```
+# pacman -S xorg-xinit
+```
+&gt;Copie e edite o arquivo de configuração padrão:
+```
+$ cp /etc/X11/xinit/xinitrc ~/.xinitrc
+```
+```
+$ nano ~/.xinitrc
+```
+&gt;Apage ou comente as seguintes linhas e adicione o comando correspondente ao seu ambiente gráfico:
+```
+#twm &amp;
+#xclock -geometry 50x50-1+1 &amp;
+#xterm -geometry 80x50+494+51 &amp;
+#xterm -geometry 80x20+494-0 &amp;
+#exec xterm -geometry 80x66+0+0 -name login
+
+exec mate-session</pre>
 </div>
 
 </div>
